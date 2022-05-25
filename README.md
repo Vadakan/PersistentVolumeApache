@@ -200,11 +200,116 @@
 ![image](https://user-images.githubusercontent.com/80065996/170314108-b2373e5c-6a8e-4926-9015-85a69593943f.png)
 
 
+# Developers needs not to worry about storage part. they can concentrate only on deploying the applications. developers will be good as long as their
+# storage are safe.
 
 
+![image](https://user-images.githubusercontent.com/80065996/170322642-042f01b6-7ed2-42ba-99e3-224cd0a688de.png)
 
 
+# configmap and secret as volumes:
 
+
+![image](https://user-images.githubusercontent.com/80065996/170323686-cf47f6e9-1b74-44eb-85fe-566262cc5b64.png)
+
+
+![image](https://user-images.githubusercontent.com/80065996/170323862-8238b90d-d53b-49c6-a325-7f533ccd31ee.png)
+
+
+![image](https://user-images.githubusercontent.com/80065996/170324070-ab9d8b4d-ce7b-49e2-922c-42bf856eb4fe.png)
+
+
+![image](https://user-images.githubusercontent.com/80065996/170324410-53532708-d517-4a43-8eff-8dcfdf4ff8fc.png)
+
+
+![image](https://user-images.githubusercontent.com/80065996/170324525-c302a1a5-381a-4569-aa5a-dd6d8567fcb7.png)
+
+
+![image](https://user-images.githubusercontent.com/80065996/170324728-7a0b4354-45bc-4437-aefe-ae1a12637f5e.png)
+
+
+![image](https://user-images.githubusercontent.com/80065996/170325113-44fe4519-be1a-49f6-9c56-13e37376b217.png)
+
+
+# same pod can use different 'volume types'
+
+
+![image](https://user-images.githubusercontent.com/80065996/170325513-ea235cb9-b4d1-4ab4-942e-60566ccaf149.png)
+
+
+![image](https://user-images.githubusercontent.com/80065996/170325645-73e1bd15-32ae-4f05-b4ce-7d1a71456054.png)
+
+
+![image](https://user-images.githubusercontent.com/80065996/170325830-aef08116-4e0b-4e5e-b15e-8d082524a9f6.png)
+
+
+![image](https://user-images.githubusercontent.com/80065996/170325998-0e99ce21-d26b-4254-99da-11c418a3f314.png)
+
+
+# storage class
+# kuberneted admin creates 'storage class' & 'Persistent Volume'. Developers create 'persistent volume claim' and use it along with their pod configuration. 'persistent volume claim' will use 'persistent volume' to bind and store their data.
+
+
+![image](https://user-images.githubusercontent.com/80065996/170326258-a979c092-0dd1-4d02-8cf4-662e372d3f86.png)
+
+
+# lets take hunderds of application need their 'persistent volume' for their deployment. so everyone will go and request 'kubernetes admin' to create 
+# 'persistent volume' and then he created many 'persistent volume' for many applications.
+# Creation of 'persistent volume' is a manual job for kubernetes admin and it is really time consuming for creating 'persistent volumes' for many applications.
+
+
+![image](https://user-images.githubusercontent.com/80065996/170326830-61ef3634-3cf8-4198-b2ac-21311716e1aa.png)
+
+
+# to make admin's life easier in this manual job, there is a another component in kubernetes called 'storage class'
+
+
+![image](https://user-images.githubusercontent.com/80065996/170327186-f7e79346-f7c1-4760-b4e5-e89f8a82eed8.png)
+
+
+![image](https://user-images.githubusercontent.com/80065996/170327261-c7970210-33c8-4875-a5ad-ab838b7d1336.png)
+
+
+# 'Storage class' creates 'persistent volume' dynamically whenever 'persistent volume claim' claims it.
+
+
+![image](https://user-images.githubusercontent.com/80065996/170327392-1cc80663-2255-47d8-ad8b-12d9ba7c5af7.png)
+
+
+# storage class yaml file
+
+
+![image](https://user-images.githubusercontent.com/80065996/170327915-a299e0a4-79d2-49ba-ba6f-26b978a928c2.png)
+
+
+# 'provisioner' fields in yaml tells use what kind of 'persistent volume' needs to be created whenever 'persistent volume claim' claims this 'storage class'
+
+
+![image](https://user-images.githubusercontent.com/80065996/170328253-35a1c7a7-b2ab-4932-8d40-b9ec8d63dd58.png)
+
+# we have tell 'storage class' yaml file on what kind of 'persistent volume' needs to be created from basic storage types which kubernetes supports. and also
+# we have to mention the 'storage size' as well.
+
+
+![image](https://user-images.githubusercontent.com/80065996/170328351-8f80f68e-4220-4a55-8081-9fea9083ea00.png)
+
+
+![image](https://user-images.githubusercontent.com/80065996/170328535-90f6e077-ac6b-49ca-9edf-d0c22fc47d27.png)
+
+
+# how to use this 'storage class' in our 'pod' configuration
+# we have to mention the name of 'storage class' in 'persistent volume claim' config yaml file
+# 'persistent volume claim' name will be mentioned in 'pod' configuration. 
+# so pod will request 'persistent volume claim' and in turn 'persistent volume claim' calls the 'storage class' so that 'storage class' will automatically create the 'persistent volume' for us which in turns binds the 'persistent volume' with our 'persistent volume claim'
+
+
+![image](https://user-images.githubusercontent.com/80065996/170328642-c1680d9c-c0ff-45b2-946f-b65d6cd94e5a.png)
+
+
+![image](https://user-images.githubusercontent.com/80065996/170328702-34dd6bf3-22e9-4229-a743-6080d1ee29b3.png)
+
+
+![image](https://user-images.githubusercontent.com/80065996/170328791-13b5dfbb-5918-4010-bf42-33026be5ecd6.png)
 
 
 
