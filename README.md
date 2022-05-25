@@ -160,6 +160,50 @@
 ![image](https://user-images.githubusercontent.com/80065996/170306586-cea6c68a-d420-436c-90aa-8367f01dda80.png)
 
 
+# use 'persistent volume claim' in our pod definition like below to access the persistent volume
+
+
+![image](https://user-images.githubusercontent.com/80065996/170307641-c687e68b-5baf-4651-bee6-ce01a1dea2b1.png)
+
+
+![image](https://user-images.githubusercontent.com/80065996/170307907-406f3831-99a9-4397-a7af-9bc84bd7acf0.png)
+
+
+# step by step how "persistent volume' is used.
+
+
+![image](https://user-images.githubusercontent.com/80065996/170309197-9d71ddb4-f656-413b-8ea7-94f984be7a25.png)
+
+
+# "persistent volume claim" should be present in same "namespace" as of the pod which it is using. (or else pod cannot access it)
+# "persistent volume" are not namespaced but "persistent volume claim" are namespaced.
+
+
+![image](https://user-images.githubusercontent.com/80065996/170309553-8251366a-b544-409c-9250-44ecb88b70fd.png)
+
+
+![image](https://user-images.githubusercontent.com/80065996/170312415-c999c07a-ed05-4426-89b3-a88f41bad9f6.png)
+
+
+# volume is first mounted into the pod and then to the container
+
+
+![image](https://user-images.githubusercontent.com/80065996/170312829-1070e139-4c89-464c-ada8-8264c0e90754.png)
+
+
+![image](https://user-images.githubusercontent.com/80065996/170313767-542cbc98-214e-4957-820d-7804b5c282c7.png)
+
+
+# why so many abstractions ?
+
+
+![image](https://user-images.githubusercontent.com/80065996/170314108-b2373e5c-6a8e-4926-9015-85a69593943f.png)
+
+
+
+
+
+
 
 
 
