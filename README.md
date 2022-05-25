@@ -68,6 +68,99 @@
 ![image](https://user-images.githubusercontent.com/80065996/170296559-3958130e-e9e0-48a4-bc58-be4f5639ddad.png)
 
 
+# we can make some application in cluster used NFS, some application uses cloud storage and some can use local storage
+
+
+![image](https://user-images.githubusercontent.com/80065996/170299408-d8505e5d-230f-4244-bbd7-c87c4359190f.png)
+
+
+# NFS server
+
+
+![image](https://user-images.githubusercontent.com/80065996/170299655-37a2a501-c341-4f1e-b41d-bc8739fcf571.png)
+
+
+# google cloud
+
+
+![image](https://user-images.githubusercontent.com/80065996/170300060-e3bc3df0-f25f-4a78-bfcb-e079fe190b7e.png)
+
+
+# local storage on the node
+
+
+![image](https://user-images.githubusercontent.com/80065996/170300241-4ab435f1-33cf-46b4-a4bb-623f5ec78e0f.png)
+
+
+# LIST OF storage backend supported by kubernetes
+
+
+![image](https://user-images.githubusercontent.com/80065996/170300548-f89f9d43-db8a-418d-af23-9ca81ed0c0a7.png)
+
+
+# persistent volumes are not namespaced
+
+
+![image](https://user-images.githubusercontent.com/80065996/170301314-bdc6f26c-b2f9-4da6-a23a-26299f86b4f8.png)
+
+
+![image](https://user-images.githubusercontent.com/80065996/170301384-76ccacf4-7795-446a-a9cf-8d9f7fd39782.png)
+
+
+# local vs remote volume types
+
+
+![image](https://user-images.githubusercontent.com/80065996/170301596-583ac087-3a19-41bb-b8ab-52584296296f.png)
+
+
+![image](https://user-images.githubusercontent.com/80065996/170301890-b623da8e-f040-4803-8ae0-191e550551fa.png)
+
+
+# for database purpose use case, always use "remote volumes" which can survive even cluster crash
+
+
+# who creates persistent volume and when ? (note: this is "persistent volume" not "persistent volume claim")
+# "persistent volume" is like CPU,memory which should be already present before in the cluster.
+# Pod which needs this "persistent volume" will create the "persistent volume claim"
+
+
+![image](https://user-images.githubusercontent.com/80065996/170302421-7f246259-1b00-4701-b273-8557e2320235.png)
+
+
+![image](https://user-images.githubusercontent.com/80065996/170302748-60ed9c44-e927-4e2f-b3ea-4628588ae115.png)
+
+
+# kubernetes admin - 1) set up cluster 2) create storage (nfs, cloud storage, local) from storage backend supported by kubernetes. 3) create "persistent volume" in the cluster based on "storage backends" supported.
+
+
+![image](https://user-images.githubusercontent.com/80065996/170303336-8bf5b038-7513-4400-8bc3-04f6707552e1.png)
+
+
+# now application team says what type of "persistent volume" they need.
+
+
+![image](https://user-images.githubusercontent.com/80065996/170304548-9108dbef-1bf3-43b8-b530-2c4344e6c4fb.png)
+
+
+# once kubernetes admin created "persistent volume" from storage backend supported by kubernetes on the cluster, development team need to create 
+# the "persistent Volume Claim" and attach to that our pod so that pod will use the storage available in "persistent volume" present in cluster created by
+# kubernetes administrator.
+
+
+![image](https://user-images.githubusercontent.com/80065996/170305353-88f02fbc-cdd6-49d1-a396-7f0d49e7a91f.png)
+
+
+![image](https://user-images.githubusercontent.com/80065996/170305561-5915ae76-243e-4d08-80f7-8a30343614f7.png)
+
+
+# there will be multiple "persistent volume" of different types available in the cluster. whatever details mentioned in our "persistent volume claim" matched with "persistent volume" available in the cluster, it will be picked up by our pods. 
+# 1) storage space 2) storage class 3) type of storage
+
+
+![image](https://user-images.githubusercontent.com/80065996/170306586-cea6c68a-d420-436c-90aa-8367f01dda80.png)
+
+
+
 
 
 
